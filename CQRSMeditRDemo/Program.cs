@@ -1,6 +1,16 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using CQRSMeditRDemo.Data;
+using CQRSMeditRDemo.Repositories;
+using CQRSMeditRDemo.Repositories.Interfaces;
+using MediatR;
+using Microsoft.AspNetCore.Hosting;
+using System.Reflection;
+
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
+builder.Services.AddDbContext<DbContextClass>();
+builder.Services.AddScoped<IStudentRepository, StudentRepository>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
