@@ -1,9 +1,10 @@
-﻿using CQRSMeditRDemo.Models;
+﻿using CSharpFunctionalExtensions;
+using CQRSMeditRDemo.Models;
 using MediatR;
 
 namespace CQRSMeditRDemo.Commands
 {
-	public class CreateStudentCommand : IRequest<StudentDetails>
+	public class CreateStudentCommand : IRequest<Result<StudentDetails>>
     {
         public string StudentName { get; set; }
         public string StudentEmail { get; set; }
